@@ -1,0 +1,4 @@
+<%= link_to article, class: 'block py-4 px-2 hover:bg-gray-100' do %>
+  <span class="block text-xl font-bold"><%= article.title %></span>
+  <span class="block"><%= article.created_at.to_s :short %></span>
+<% end %>

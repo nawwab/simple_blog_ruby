@@ -1,0 +1,10 @@
+<% content_for :header do  %>
+  <%= render 'navbar' %>
+<% end %>
+
+<p class="text-xl mb-4">Welcome to my simple blog</p>
+<% @articles.each do |article| %>
+  <%= render article %>
+<% end %>
+
+<%= link_to "New Article", new_article_path %>

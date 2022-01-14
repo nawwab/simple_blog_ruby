@@ -1,0 +1,23 @@
+<% content_for :header do  %>
+  <%= render 'navbar' %>
+<% end %>
+
+<div class="flex justify-between items-center mb-4">
+  <div>
+    <h1 class="text-3xl font-bold mb-1"><%= @article.title %></h1>
+    <p class="text-gray-600"><%=  @article.created_at.to_s :short %></p>
+  </div>
+  <div>
+    <%= link_to "edit", edit_article_path(@article), class: 'mr-2 text-gray-600' %>
+    <%= link_to "delete", article_path(@article), data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+    }, class: 'text-gray-600' %>
+  </div>
+</div>
+
+<p class="text-xl mb-4"><%= @article.body %></p>
+
+<h2 class="text-xl font-bold text-gray-600 mb-2">Comments:</h2>
+<%= render @article.comments %>
+<%= render 'comments/form' %>
