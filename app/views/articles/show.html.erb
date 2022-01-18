@@ -1,5 +1,10 @@
 <% content_for :header do  %>
   <%= render 'navbar' %>
+  <% if @comment.errors.any?  %>
+    <%= render partial: 'nav_messages', locals: { message: "Error when adding comment", status: 'warning' } %>
+  <%# <% elsif @comment.id.nil? %1> %>
+  <%#   <%= render partial: 'nav_messages', locals: { message: "Comment added", status: 'success' } %1> %>
+  <% end %>
 <% end %>
 
 <div class="flex justify-between items-center mb-4">
@@ -18,6 +23,11 @@
 
 <p class="text-xl mb-4"><%= @article.body %></p>
 
-<h2 class="text-xl font-bold text-gray-600 mb-2">Comments:</h2>
-<%= render @article.comments %>
+<div class="flex justify-between items-center mb-2">
+  <h2 class="text-xl font-bold text-gray-600">Comments:</h2>
+  <p class="text-sm rounded-xl text-white bg-gray-700 px-2">
+    <%= @article.comments.where(status: 'public').count %> comments
+  </p>
+</div>
 <%= render 'comments/form' %>
+<%= render @article.comments %>

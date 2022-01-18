@@ -4,7 +4,9 @@
 
 <p class="text-xl mb-4">Welcome to my simple blog</p>
 <% @articles.each do |article| %>
-  <%= render article %>
+  <% unless article.archived? %>
+    <%= render article %>
+  <% end %>
 <% end %>
 
 <%= link_to "New Article", new_article_path %>

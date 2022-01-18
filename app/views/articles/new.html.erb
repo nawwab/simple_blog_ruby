@@ -1,5 +1,7 @@
-<%= link_to "Home", articles_path %>
+<% content_for :header do  %>
+  <%= render 'navbar' %>
+<% end %>
 
-<h1>New Article</h1>
+<h1 class="text-3xl font-bold mb-1">New Article</h1>
 
 <%= render "form", article: @article %>
